@@ -6,6 +6,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.MalformedJwtException;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.SignatureException;
+import io.jsonwebtoken.UnsupportedJwtException;
 import java.nio.channels.UnsupportedAddressTypeException;
 import java.util.Date;
 import org.slf4j.Logger;
@@ -34,20 +35,18 @@ public class JwtProvider {
 
     }
 
-    public String getNombreUsuarioFromToquen(String toquen) {
-        String token = null;
-
+    public String getNombreUsuarioFromToken(String token) {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
     }
 
-    public boolean validateToquen(String token) {
+    public boolean validateToken(String token) {
 
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
         } catch (MalformedJwtException e) {
             logger.error("token mal Formado");
-        } catch (UnsupportedAddressTypeException e) {
+        } catch (UnsupportedJwtException e) {
             logger.error("Token no soportado");
         } catch (ExpiredJwtException e) {
             logger.error("Token Expirado");

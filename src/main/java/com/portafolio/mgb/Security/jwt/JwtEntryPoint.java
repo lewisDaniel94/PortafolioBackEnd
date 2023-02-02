@@ -22,6 +22,6 @@ public class JwtEntryPoint implements AuthenticationEntryPoint {
                 response.sendError(HttpServletResponse.SC_UNAUTHORIZED);
 
         
-    }
+    } 
     
 }

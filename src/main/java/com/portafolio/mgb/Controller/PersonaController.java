@@ -19,32 +19,34 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http:localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
     @Autowired IPersonaService ipersonaService;
     
     
     @GetMapping("personas/traer")
     public List<Persona>getPersona(){
-        return ipersonaService.getPrsona();
+        return ipersonaService.getPersona();
  
     }
     @PreAuthorize ("hasRole('ADMIN')")
-    @PostMapping("/persona/crear")
-    public String crearPersona(@RequestBody Persona persona) {
+    @PostMapping("/personas/crear")
+    public String createPersona(@RequestBody Persona persona) {
      ipersonaService.savePersona(persona);
     return"la persona fue creada correctamente";
     
     }
+    
+    
     @PreAuthorize ("hasRole('ADMIN')")
-    @DeleteMapping("/persona/borrar/{id}")
+    @DeleteMapping("/personas/borrar/{id}")
     public String deletePersona(@PathVariable Long id){
-    ipersonaService.deletePErsona(id);
+    ipersonaService.deletePersona(id);
    return"la persona fue eliminada correctamente";
     
     }
     @PreAuthorize ("hasRole('ADMIN')")
-    @PutMapping("/persona/editar/{id}")
+    @PutMapping("/personas/editar/{id}")
 public Persona editPersona(@PathVariable Long id,
 
         @RequestParam("nombre") String nuevoNombre,

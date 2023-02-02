@@ -8,7 +8,7 @@ import java.util.List;
 public interface IPersonaService {
     
     //traer persona
-    public List<Persona>getPrsona();
+    public List<Persona>getPersona();
     
     //guardar un objeto de tipo persona
     
@@ -16,7 +16,7 @@ public interface IPersonaService {
     
     //eliminar un usuario pero lo buscamos por id
     
-    public void deletePErsona(Long id);
+    public void deletePersona(Long id);
     
     //buscar un persona por id
     

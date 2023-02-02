@@ -32,16 +32,9 @@ public class Usuario {
 
      @JoinTable(name = "usuario_rol", joinColumns= @JoinColumn(name="usuario_id"), inverseJoinColumns =@JoinColumn(name="rol_id"))
      private Set<Rol> roles = new HashSet<>();
-     
-     
-     //contructores
 
     public Usuario() {
     }
-
- 
-     
-     //getter y setter
 
     public Usuario(String nombre, String nombreUsuario, String email, String password) {
         this.nombre = nombre;
@@ -49,8 +42,6 @@ public class Usuario {
         this.email = email;
         this.password = password;
     }
-
-// G y S
 
     public int getId() {
         return id;
@@ -99,8 +90,8 @@ public class Usuario {
     public void setRoles(Set<Rol> roles) {
         this.roles = roles;
     }
+     
     
-    
-    
+    }
 
-}
+ 

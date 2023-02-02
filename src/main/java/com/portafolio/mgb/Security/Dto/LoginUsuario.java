@@ -16,6 +16,8 @@ public class LoginUsuario {
     @NotBlank
     private String password;
 
+    
+    // G y S
     public String getNombreUsuario() {
         return nombreUsuario;
     }

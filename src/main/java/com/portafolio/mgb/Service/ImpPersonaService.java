@@ -13,10 +13,8 @@ public class ImpPersonaService implements IPersonaService{
         @Autowired IPersonaRepository ipersonaRepository;
     
    
-   
-
     @Override
-    public List<Persona> getPrsona() {
+    public List<Persona> getPersona() {
         List<Persona>persona = ipersonaRepository.findAll();
         return persona;
     }
@@ -27,7 +25,7 @@ public class ImpPersonaService implements IPersonaService{
     }
 
     @Override
-    public void deletePErsona(Long id) {
+    public void deletePersona(Long id) {
         ipersonaRepository.deleteById(id);
     }
 

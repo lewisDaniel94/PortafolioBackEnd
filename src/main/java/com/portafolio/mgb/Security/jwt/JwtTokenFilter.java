@@ -21,21 +21,21 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     @Autowired
     JwtProvider jwtProvider;
     @Autowired
-    UserDetailsImpl UserDetailsServiceImpl;
+    UserDetailsImpl userDetailsServiceImpl;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
             String token = getToken(request);
-            if (token != null && jwtProvider.validateToquen(token)) {
-                String nombreUsuario = jwtProvider.getNombreUsuarioFromToquen(token);
-                UserDetails userDetails = UserDetailsServiceImpl.loadUserByUsername(nombreUsuario);
+            if (token != null && jwtProvider.validateToken(token)) {
+                String nombreUsuario = jwtProvider.getNombreUsuarioFromToken(token);
+                UserDetails userDetails = userDetailsServiceImpl.loadUserByUsername(nombreUsuario);
                 UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(userDetails,
                         null, userDetails.getAuthorities());
                         
                         SecurityContextHolder.getContext().setAuthentication(auth);
             }
         } catch (Exception e) {
-            logger.error("faoolo el metodo doFilterInterna");
+            logger.error("fallo el metodo doFilterInterna");
         }
         filterChain.doFilter(request, response);
 
